@@ -89,7 +89,7 @@ local usr_setup = {
 
   -- Lsp language setup                                       -- s-lsp
   lsp = {
-    
+    -- TODO    
   }
 }
 
