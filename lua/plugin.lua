@@ -63,6 +63,12 @@ packer.startup(function()
     'lifepillar/vim-gruvbox8'
   }
 
+  -- gruvbox
+  use {
+    'ellisonleao/gruvbox.nvim',
+    requires = {"rktjmp/lush.nvim"}
+  }
+
   -- snippet
 --  use {
 --    'SirVer/ultisnips'
@@ -74,16 +80,11 @@ packer.startup(function()
     run = 'yarn install'
   }
 
-  -- theme
-  use {
-    'ellisonleao/gruvbox.nvim',
-    requires = {"rktjmp/lush.nvim"}
-  }
 
   -- fuzzy finder over lists -lua
   use {
     'nvim-telescope/telescope.nvim',
-    require = { {'nvim-lua/plenary.nvim'} }
+    requires = { {'nvim-lua/plenary.nvim'} }
   }
 
   -- lsp - lua

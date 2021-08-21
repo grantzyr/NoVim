@@ -9,11 +9,12 @@ end
 
 local opt = {}
 
-local load_mapping = function()
+local user_mapping = function()
 
 	-- set leader key
   key_mapper('n','<Space>','<nop>',opt)
   vim.g.mapleader = " "
+
 
 	-- disable arrow keys
 	key_mapper('', '<up>', '<nop>', opt)
@@ -44,4 +45,18 @@ local load_mapping = function()
 	-- key_mapper('n', '<C-i>', ':!python3 % <CR>', {buffer = true})
 end
 
-load_mapping()
+local bind_mapping = function()
+  -- for telescope.nvim
+  key_mapper("n", "<leader>ff", ":lua require('telescope.builtin').find_files()<CR>",opt)
+  key_mapper("n", "<leader>fg", ":lua require('telescope.builtin').live_grep()<CR>",opt)
+  key_mapper("n", "<leader>fb", ":lua require('telescope.builtin').buffers()<CR>",opt)
+  key_mapper("n", "<leader>fh", ":lua require('telescope.builtin').help_tags()<CR>",opt)
+
+  -- for nvim-tree
+  key_mapper("n", "<C-n>", ":NvimTreeToggle<CR>", opt)
+  key_mapper("n", "<leader>r", ":NvimTreeRefresh<CR>", opt)
+  key_mapper("n", "<leader>n", ":NvimTreeFindFile<CR>", opt)
+end
+
+user_mapping()
+bind_mapping()

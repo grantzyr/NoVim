@@ -3,7 +3,7 @@ local g, opt, cmd, fn = vim.g, vim.opt, vim.cmd, vim.fn
 local usr_opts  = require('setup').options
 
 
-local function load_options()
+local function user_options()
 
   -- Theme
   cmd(usr_opts.theme_options)
@@ -15,5 +15,12 @@ local function load_options()
 
 end
 
-load_options()
+local function bind_options()
+
+
+end
+
+user_options()
+bind_options()
+
 
