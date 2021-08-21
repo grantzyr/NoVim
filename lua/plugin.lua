@@ -102,7 +102,8 @@ packer.startup(function()
     'glepnir/galaxyline.nvim',
     branch = "main",
     -- my statusline
-    config = function() require'my_statusline' end,
+    -- config = function() require'my_statusline' end,
+    config = function() require "theme.statusline" end,
     -- some optional icons
     requires = {'kyazdani42/nvim-web-devicons', opt = true}
   }

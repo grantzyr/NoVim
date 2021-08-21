@@ -6,7 +6,9 @@ local usr_opts  = require('setup').options
 local function load_options()
 
   -- Theme
-  cmd(usr_opts.theme_options)
+  if usr_opts.theme_options then
+    cmd(usr_opts.theme_options)
+  end
 
   -- load options from usr setup - options - global_options
   for name,value in pairs(usr_opts.global_options) do

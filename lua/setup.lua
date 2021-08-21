@@ -12,11 +12,13 @@ local usr_setup = {
   -- users options setup                                      -- s-options
   options = {
     -- theme setting                                          -- opt-theme
-    theme_options =	'colo gruvbox8',
+    theme_options =	'colorscheme gruvbox',
+    theme_statusline = 'air_line', 
 
     -- global options for all filetype setting with vim.opt   -- opt-global
     global_options = {
       -- general 
+      background      = "dark";
       ruler 					= false;    -- Show the line and column number of the cursor position, separated by a comma.
       showmode 				= false;    -- If in Insert, Replace or Visual mode put a message on the last line.
       showmatch       = false;
@@ -25,10 +27,10 @@ local usr_setup = {
       laststatus 			= 2;
       splitbelow 			= true;     -- When on, splitting a window will put the new window below the current one.
       splitright 			= true;     -- When on, splitting a window will put the new window right the current one.
-      termguicolors		= ture;     -- draft off. Enables 24-bit RGB color in the TUI.
+      termguicolors		= true;     -- draft off. Enables 24-bit RGB color in the TUI.
       hidden 					= true;     -- When off a buffer is unloaded when it is abandoned.
       mouse 					= "a";      -- draft off. 'a' - all model. enable mouse support.
-      syntax 					= 'on';					
+      syntax 					= "on";					
       errorbells 			= false;    -- Ring the bell (beep or screen flash) for error messages. 
       visualbell      = false;
       clipboard 			= "unnamedplus";  -- Copy and paste from anywhere.
@@ -51,7 +53,7 @@ local usr_setup = {
       shiftwidth 			= 2;        -- Returns the effective value of 'shiftwidth'.
       expandtab 			= true;     -- In Insert mode: Use the appropriate number of spaces to insert a <Tab>.  Spaces are used in indents with the '>' and '<' commands and when 'autoindent' is on.
       -- relativenumber = true;   -- Show the line number relative to the line with the cursor in front of each line.
-      signcolumn 			= 'yes';    -- When and how to draw the signcolumn.
+      signcolumn 			= "yes";    -- When and how to draw the signcolumn.
 
       -- backups
       undodir 				= vim.fn.stdpath('config') .. '/undodir';
