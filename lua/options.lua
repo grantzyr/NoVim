@@ -1,7 +1,6 @@
 
 local g, opt, cmd, fn = vim.g, vim.opt, vim.cmd, vim.fn
-local usr_opts  = require('setup').options
-
+local usr_opts  = require("setup").options
 
 local function load_options()
 
@@ -9,6 +8,9 @@ local function load_options()
   if usr_opts.theme_options then
     cmd(usr_opts.theme_options)
   end
+
+  -- statusline
+  require("lualine_setup")
 
   -- load options from usr setup - options - global_options
   for name,value in pairs(usr_opts.global_options) do

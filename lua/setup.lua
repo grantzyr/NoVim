@@ -13,7 +13,7 @@ local usr_setup = {
   options = {
     -- theme setting                                          -- opt-theme
     theme_options =	'colorscheme gruvbox',
-    theme_statusline = 'air_line', 
+    theme_statusline = 'gruvbox_material',  -- https://github.com/hoob3rt/lualine.nvim/blob/master/THEMES.md
 
     -- global options for all filetype setting with vim.opt   -- opt-global
     global_options = {

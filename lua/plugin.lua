@@ -99,12 +99,7 @@ packer.startup(function()
 
   -- statusline -lua
   use {
-    'glepnir/galaxyline.nvim',
-    branch = "main",
-    -- my statusline
-    -- config = function() require'my_statusline' end,
-    config = function() require "theme.statusline" end,
-    -- some optional icons
+    'hoob3rt/lualine.nvim',
     requires = {'kyazdani42/nvim-web-devicons', opt = true}
   }
   end
