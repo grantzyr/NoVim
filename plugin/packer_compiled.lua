@@ -78,6 +78,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/grant/.local/share/nvim/site/pack/packer/start/gloombuddy"
   },
+  ["glow.nvim"] = {
+    loaded = true,
+    path = "/Users/grant/.local/share/nvim/site/pack/packer/start/glow.nvim"
+  },
   ["gruvbox.nvim"] = {
     loaded = true,
     path = "/Users/grant/.local/share/nvim/site/pack/packer/start/gruvbox.nvim"
@@ -101,6 +105,10 @@ _G.packer_plugins = {
   ["packer.nvim"] = {
     loaded = true,
     path = "/Users/grant/.local/share/nvim/site/pack/packer/start/packer.nvim"
+  },
+  ["plenary.nvim"] = {
+    loaded = true,
+    path = "/Users/grant/.local/share/nvim/site/pack/packer/start/plenary.nvim"
   },
   ["telescope.nvim"] = {
     loaded = true,
