@@ -56,7 +56,7 @@ local usr_setup = {
       signcolumn 			= "yes";    -- When and how to draw the signcolumn.
 
       -- backups
-      undodir 				= vim.fn.stdpath('config') .. '/undodir';
+      -- undodir 				= '$HOME/nvim/undodir'; -- This is default dir
       undofile 				= true;
       backupskip     	= "/tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*,*/shm/*,/private/var/*,.vault.vim";
       backupdir       = vim.fn.stdpath('config') ..'/backupdir';
