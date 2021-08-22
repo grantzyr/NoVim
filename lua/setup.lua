@@ -6,6 +6,7 @@
 -- Plugin setup                                                   s-plugin --
 -- Lsp language setup                                                s-lsp --
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+local global = require('global')
 
 local usr_setup = {
 
@@ -55,15 +56,6 @@ local usr_setup = {
       -- relativenumber = true;   -- Show the line number relative to the line with the cursor in front of each line.
       signcolumn 			= "yes";    -- When and how to draw the signcolumn.
 
-      -- backups
-      -- undodir 				= '$HOME/nvim/undodir'; -- This is default dir
-      undofile 				= true;
-      backupskip     	= "/tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*,*/shm/*,/private/var/*,.vault.vim";
-      backupdir       = vim.fn.stdpath('config') ..'/backupdir';
-      backup 					= false;
-      writebackup			= false;
-      swapfile 				= false;    -- same as backup
-
       -- timeout setting
       timeout 				= true;
       ttimeout 				= true;
@@ -76,6 +68,18 @@ local usr_setup = {
       -- shortmess:append "sI";   -- disable nvim intro.
       -- breakat 				= ;       -- TODO
 
+    },
+
+    -- dont change it if not necessay
+    bind_options = {
+      -- backups
+      undodir 				= global.cache_dir .. "undo/";
+      undofile 				= true;
+      backupskip     	= "/tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*,*/shm/*,/private/var/*,.vault.vim";
+      backupdir       = global.cache_dir .. "backup/";
+      backup 					= false;
+      writebackup			= false;
+      swapfile 				= false;    -- same as backup
     }
   },
   

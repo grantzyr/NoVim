@@ -17,6 +17,11 @@ local function load_options()
 		vim.opt[name] = value
 	end
 
+  -- load bind options
+  for name, value in pairs(usr_opts.bind_options) do
+    vim.opt[name] = value
+  end
+
 end
 
 load_options()
