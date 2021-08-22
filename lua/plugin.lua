@@ -98,14 +98,15 @@ packer.startup(function()
     requires = "kyazdani42/nvim-web-devicons"
   }
 
+  -- startup time check
+  use {
+    'tweekmonster/startuptime.vim'
+  }
+
   -- statusline -lua
   use {
-    "glepnir/galaxyline.nvim",
-    branch = "main",
-    -- my statusline
-    config = function() require"my_statusline" end,
-    -- some optional icons
-    requires = {"kyazdani42/nvim-web-devicons", opt = true}
+    'hoob3rt/lualine.nvim',
+    requires = {'kyazdani42/nvim-web-devicons', opt = true}
   }
   end
 )

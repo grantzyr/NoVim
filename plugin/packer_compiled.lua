@@ -69,11 +69,6 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
-  ["galaxyline.nvim"] = {
-    config = { "\27LJ\2\n-\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\18my_statusline\frequire\0" },
-    loaded = true,
-    path = "/Users/grant/.local/share/nvim/site/pack/packer/start/galaxyline.nvim"
-  },
   gloombuddy = {
     loaded = true,
     path = "/Users/grant/.local/share/nvim/site/pack/packer/start/gloombuddy"
@@ -85,6 +80,10 @@ _G.packer_plugins = {
   ["gruvbox.nvim"] = {
     loaded = true,
     path = "/Users/grant/.local/share/nvim/site/pack/packer/start/gruvbox.nvim"
+  },
+  ["lualine.nvim"] = {
+    loaded = true,
+    path = "/Users/grant/.local/share/nvim/site/pack/packer/start/lualine.nvim"
   },
   ["lush.nvim"] = {
     loaded = true,
@@ -106,9 +105,9 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/grant/.local/share/nvim/site/pack/packer/start/packer.nvim"
   },
-  ["plenary.nvim"] = {
+  ["startuptime.vim"] = {
     loaded = true,
-    path = "/Users/grant/.local/share/nvim/site/pack/packer/start/plenary.nvim"
+    path = "/Users/grant/.local/share/nvim/site/pack/packer/start/startuptime.vim"
   },
   ["telescope.nvim"] = {
     loaded = true,
@@ -125,10 +124,6 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: galaxyline.nvim
-time([[Config for galaxyline.nvim]], true)
-try_loadstring("\27LJ\2\n-\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\18my_statusline\frequire\0", "config", "galaxyline.nvim")
-time([[Config for galaxyline.nvim]], false)
 if should_profile then save_profiles() end
 
 end)
