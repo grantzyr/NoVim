@@ -73,7 +73,7 @@ local usr_setup = {
       updatetime 			= 200;      -- Faster completion.
 
       -- others
-      -- shortmess:append "sI";    -- disable nvim intro.
+      -- shortmess:append "sI";   -- disable nvim intro.
       -- breakat 				= ;       -- TODO
 
     }

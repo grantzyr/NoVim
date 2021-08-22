@@ -97,6 +97,11 @@ packer.startup(function()
     requires = 'kyazdani42/nvim-web-devicons'
   }
 
+  -- startup time check
+  use {
+    'tweekmonster/startuptime.vim'
+  }
+
   -- statusline -lua
   use {
     'hoob3rt/lualine.nvim',
