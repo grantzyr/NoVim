@@ -15,16 +15,35 @@ vim.cmd [[packadd packer.nvim]]
 local packer = require("packer")
 local util = require("packer.util")
 local use = packer.use
+local usr_plugin = require("setup").plugin
 
 packer.init({
   package_root = util.join_paths(vim.fn.stdpath("data"), "site", "pack")
 })
 
-packer.startup(function()
+packer.startup({function()
+
+  -- for name,value in pairs(usr_plugin) do
+  --   use {
+  --     value.name,
+  --     ft = value.ft,
+  --     cmd = value.cmd,
+  --     event = value.event,
+  --     requires = value.requires,
+  --     after = value.after,
+  --     config = value.config,
+  --     run = value.run
+  --   }
+	-- end
   -- Packer can manage itself - lua
   use {
     "wbthomason/packer.nvim"
     -- event = "VimEnter",
+  }
+
+  use {
+    "b3nj5m1n/kommentary"
+
   }
 
   -- auto add closer - vim
@@ -84,7 +103,8 @@ packer.startup(function()
   -- fuzzy finder over lists -lua
   use {
     "nvim-telescope/telescope.nvim",
-    requires = { {"nvim-lua/plenary.nvim"} }
+    requires = { {"nvim-lua/plenary.nvim"} },
+--    keys = {"n", "<leader>af"}
   }
 
   -- lsp - lua
@@ -95,7 +115,8 @@ packer.startup(function()
   -- File Explorer - lua
   use {
     "kyazdani42/nvim-tree.lua",
-    requires = "kyazdani42/nvim-web-devicons"
+    requires = "kyazdani42/nvim-web-devicons",
+--    keys = {"n", "<leader>at"}
   }
 
   -- startup time check
@@ -103,10 +124,44 @@ packer.startup(function()
     'tweekmonster/startuptime.vim'
   }
 
+  -- markdown preview
+  use {
+    'iamcco/markdown-preview.nvim',
+    run = 'cd app && yarn install',
+    cmd = 'MarkdownPreview',
+    ft = 'markdown'
+  }
+
+  -- git signs
+--  use {
+--    'lewis6991/gitsigns.nvim',
+--    requires = {
+--      'nvim-lua/plenary.nvim'
+--    },
+--    config = function() require('gitsigns').setup() end
+--  }
+
   -- statusline -lua
   use {
     'hoob3rt/lualine.nvim',
     requires = {'kyazdani42/nvim-web-devicons', opt = true}
   }
-  end
-)
+
+  -- buffer line -lua
+  use {
+    'akinsho/bufferline.nvim',
+    requires = 'kyazdani42/nvim-web-devicons',
+    after = 'lualine.nvim'
+  }
+
+  end,
+
+  -- using a floating window
+  config = {
+    display = {
+      open_fn = function()
+        return require('packer.util').float({ border = 'single' })
+      end
+    }
+  }})
+

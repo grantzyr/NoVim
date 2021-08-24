@@ -9,6 +9,15 @@ end
 
 local opt = {}
 
+-- bind keys for plugins
+local bl = require('plugins.bufferline').bind_keys
+local ts = require('plugins.telescope').bind_keys
+local nt = require('plugins.nvimtree').bind_keys
+
+local size = function(array)
+  return table.getn(array)
+end
+
 local user_mapping = function()
 
 	-- set leader key
@@ -46,16 +55,15 @@ local user_mapping = function()
 end
 
 local bind_mapping = function()
-  -- for telescope.nvim
-  key_mapper("n", "<leader>ff", ":lua require('telescope.builtin').find_files()<CR>",opt)
-  key_mapper("n", "<leader>fg", ":lua require('telescope.builtin').live_grep()<CR>",opt)
-  key_mapper("n", "<leader>fb", ":lua require('telescope.builtin').buffers()<CR>",opt)
-  key_mapper("n", "<leader>fh", ":lua require('telescope.builtin').help_tags()<CR>",opt)
+  -- bl: bafferline, ts: telescope, nt: nvim-tree
+  local map_list = {bl, ts, nt}
 
-  -- for nvim-tree
-  key_mapper("n", "<C-n>", ":NvimTreeToggle<CR>", opt)
-  key_mapper("n", "<leader>r", ":NvimTreeRefresh<CR>", opt)
-  key_mapper("n", "<leader>n", ":NvimTreeFindFile<CR>", opt)
+  for _,v in pairs(map_list) do
+    for _,k in pairs(v) do
+      key_mapper(k[1], k[2], k[3], k[4])
+    end
+  end
+
 end
 
 user_mapping()

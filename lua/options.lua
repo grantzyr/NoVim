@@ -1,35 +1,36 @@
+-- load all options here
 
 local g, opt, cmd, fn = vim.g, vim.opt, vim.cmd, vim.fn
-local usr_opts  = require("setup").options
+local user_opts  = require("setup").options
 
-local function user_options()
+local load_options = function() 
 
   -- Theme
-  if usr_opts.theme_options then
-    cmd(usr_opts.theme_options)
+  if user_opts.theme_options then
+    cmd(user_opts.theme_options)
   end
 
-  -- statusline
-  require("lualine_setup")
+  -- statusline  - lualine
+  if user_opts.statusline then
+    require("plugins.lualine").set1()
+  end
 
-  -- load options from usr setup - options - global_options
-  for name,value in pairs(usr_opts.global_options) do
-		vim.opt[name] = value
-	end
+  -- bufferline
+  if user_opts.bufferline then
+    require("plugins.bufferline").set1()
+  end
+
+  -- load options from user setup - options - global_options
+  for name,value in pairs(user_opts.global_options) do
+    vim.opt[name] = value
+  end
 
   -- load bind options
-  for name, value in pairs(usr_opts.bind_options) do
+  for name, value in pairs(user_opts.bind_options) do
     vim.opt[name] = value
   end
 
 end
 
-local function bind_options()
-
-
-end
-
-user_options()
-bind_options()
-
+load_options()
 

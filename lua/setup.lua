@@ -13,8 +13,14 @@ local usr_setup = {
   -- users options setup                                      -- s-options
   options = {
     -- theme setting                                          -- opt-theme
-    theme_options =	'colorscheme gruvbox',
-    theme_statusline = 'gruvbox_material',  -- https://github.com/hoob3rt/lualine.nvim/blob/master/THEMES.md
+    theme_options     =	'colorscheme gruvbox',
+
+    -- statusline setting
+    statusline        = true,  -- default off
+    theme_statusline  = 'gruvbox_material',  -- https://github.com/hoob3rt/lualine.nvim/blob/master/THEMES.md
+
+    -- bufferline setting
+    bufferline        = true,  -- default off
 
     -- global options for all filetype setting with vim.opt   -- opt-global
     global_options = {
@@ -85,11 +91,6 @@ local usr_setup = {
   
   -- users mapping setup                                      -- s-mapping
   mapping = {
-    -- TODO
-  },
-
-  -- users plugin setup                                       -- s-plugin
-  plugin = {
     -- TODO
   },
 
