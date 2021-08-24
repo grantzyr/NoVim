@@ -41,6 +41,7 @@ packer.startup({function()
     -- event = "VimEnter",
   }
 
+  -- comment - lua
   use {
     "b3nj5m1n/kommentary"
 
@@ -72,17 +73,12 @@ packer.startup({function()
 --  }
 
   -- theme
-  -- gloombuddy
-  use {
-    "bkegley/gloombuddy"
-  }
-
-  -- gruvbox8
+  -- gruvbox8 -- works without true color - vim
   use {
     "lifepillar/vim-gruvbox8"
   }
 
-  -- gruvbox
+  -- gruvbox -- with true color - lua
   use {
     "ellisonleao/gruvbox.nvim",
     requires = {"rktjmp/lush.nvim"}
@@ -124,7 +120,7 @@ packer.startup({function()
     'tweekmonster/startuptime.vim'
   }
 
-  -- markdown preview
+  -- markdown preview - vim
   use {
     'iamcco/markdown-preview.nvim',
     run = 'cd app && yarn install',
