@@ -22,6 +22,7 @@ user_setup.options.plugin_options = {
     lualine           = 'set1', 
     bufferline        = 'set1', 
     indent_blankline  = 'set1',
+    lspconfig         = 'default',
   }
 }
 

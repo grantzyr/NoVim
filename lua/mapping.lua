@@ -1,4 +1,4 @@
-
+local vim = vim
 local key_mapper = function(mode, key, result, opts)
 	local options = {noremap = true, silent = true}
 	if opts then
@@ -10,19 +10,18 @@ end
 local opt = {}
 
 -- bind keys for plugins
-local bl = require('plugins.bufferline').bind_keys
-local ts = require('plugins.telescope').bind_keys
-local nt = require('plugins.nvimtree').bind_keys
-
-local size = function(array)
-  return table.getn(array)
-end
+local bl = require('plugins.bufferline').bind_keys  -- bufferline
+local ts = require('plugins.telescope').bind_keys  -- telescope
+local nt = require('plugins.nvimtree').bind_keys  -- nvim-tree
 
 local user_mapping = function()
 
 	-- set leader key
-  key_mapper('n','<Space>','<nop>',opt)
+  key_mapper('n', '<Space>', '<nop>', opt)
   vim.g.mapleader = " "
+
+  -- buffer key
+  key_mapper('n', '<leader>cc', ':bd', opt)
 
 
 	-- disable arrow keys
@@ -31,7 +30,7 @@ local user_mapping = function()
 	key_mapper('', '<left>', '<nop>', opt)
 	key_mapper('', '<right>', '<nop>', opt)
 
-	-- set jk or kj as ESC in insert mode 
+	-- set jk or kj as ESC in insert mode
 	key_mapper('i', 'jk', '<ESC>', opt)
 	key_mapper('i', 'kj', '<ESC>', opt)
 
@@ -48,7 +47,7 @@ local user_mapping = function()
 	-- key_mapper('i', '<C-h>', '<Left>', opt)
 	-- key_mapper('i', '<C-a>', '<ESC>^i', opt)
 	-- key_mapper('i', '<C-e>', '<End>', opt)
-	
+
 	-- run python file
 	-- vim.cmd [[autocmd FileType python nnoremap <buffer> <C-i> :!python % <CR>]]
 	-- key_mapper('n', '<C-i>', ':!python3 % <CR>', {buffer = true})

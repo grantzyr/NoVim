@@ -69,17 +69,22 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
-  gloombuddy = {
+  ["bufferline.nvim"] = {
     loaded = true,
-    path = "/Users/grant/.local/share/nvim/site/pack/packer/start/gloombuddy"
-  },
-  ["glow.nvim"] = {
-    loaded = true,
-    path = "/Users/grant/.local/share/nvim/site/pack/packer/start/glow.nvim"
+    path = "/Users/grant/.local/share/nvim/site/pack/packer/start/bufferline.nvim"
   },
   ["gruvbox.nvim"] = {
     loaded = true,
     path = "/Users/grant/.local/share/nvim/site/pack/packer/start/gruvbox.nvim"
+  },
+  ["indent-blankline.nvim"] = {
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/grant/.local/share/nvim/site/pack/packer/opt/indent-blankline.nvim"
+  },
+  kommentary = {
+    loaded = true,
+    path = "/Users/grant/.local/share/nvim/site/pack/packer/start/kommentary"
   },
   ["lualine.nvim"] = {
     loaded = true,
@@ -89,13 +94,29 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/grant/.local/share/nvim/site/pack/packer/start/lush.nvim"
   },
+  ["markdown-preview.nvim"] = {
+    commands = { "MarkdownPreview" },
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/grant/.local/share/nvim/site/pack/packer/opt/markdown-preview.nvim"
+  },
   ["nvim-lspconfig"] = {
     loaded = true,
-    path = "/Users/grant/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
+    needs_bufread = false,
+    path = "/Users/grant/.local/share/nvim/site/pack/packer/opt/nvim-lspconfig"
+  },
+  ["nvim-lspinstall"] = {
+    loaded = true,
+    path = "/Users/grant/.local/share/nvim/site/pack/packer/start/nvim-lspinstall"
   },
   ["nvim-tree.lua"] = {
     loaded = true,
     path = "/Users/grant/.local/share/nvim/site/pack/packer/start/nvim-tree.lua"
+  },
+  ["nvim-treesitter"] = {
+    loaded = false,
+    needs_bufread = true,
+    path = "/Users/grant/.local/share/nvim/site/pack/packer/opt/nvim-treesitter"
   },
   ["nvim-web-devicons"] = {
     loaded = true,
@@ -104,6 +125,10 @@ _G.packer_plugins = {
   ["packer.nvim"] = {
     loaded = true,
     path = "/Users/grant/.local/share/nvim/site/pack/packer/start/packer.nvim"
+  },
+  ["plenary.nvim"] = {
+    loaded = true,
+    path = "/Users/grant/.local/share/nvim/site/pack/packer/start/plenary.nvim"
   },
   ["startuptime.vim"] = {
     loaded = true,
@@ -124,6 +149,23 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+
+-- Command lazy-loads
+time([[Defining lazy-load commands]], true)
+pcall(vim.cmd, [[command! -nargs=* -range -bang -complete=file MarkdownPreview lua require("packer.load")({'markdown-preview.nvim'}, { cmd = "MarkdownPreview", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]])
+time([[Defining lazy-load commands]], false)
+
+vim.cmd [[augroup packer_load_aucmds]]
+vim.cmd [[au!]]
+  -- Filetype lazy-loads
+time([[Defining lazy-load filetype autocommands]], true)
+vim.cmd [[au FileType markdown ++once lua require("packer.load")({'markdown-preview.nvim'}, { ft = "markdown" }, _G.packer_plugins)]]
+time([[Defining lazy-load filetype autocommands]], false)
+  -- Event lazy-loads
+time([[Defining lazy-load event autocommands]], true)
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'nvim-treesitter', 'indent-blankline.nvim'}, { event = "BufRead *" }, _G.packer_plugins)]]
+time([[Defining lazy-load event autocommands]], false)
+vim.cmd("augroup END")
 if should_profile then save_profiles() end
 
 end)
