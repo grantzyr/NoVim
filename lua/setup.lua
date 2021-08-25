@@ -1,6 +1,6 @@
 -- easy setup here
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
--- CONTENTS                                                   VIM CONTENTS -- 
+-- CONTENTS                                                   VIM CONTENTS --
 -- Options setup                                                 s-options --
 -- Mapping setup                                                 s-mapping --
 -- Plugin setup                                                   s-plugin --
@@ -19,15 +19,15 @@ user_setup.options.plugin_options = {
   },
 
   plugin_set = {
-    lualine           = 'set1', 
-    bufferline        = 'set1', 
+    lualine           = 'set1',
+    bufferline        = 'set1',
     indent_blankline  = 'set1',
     lspconfig         = 'default',
   }
 }
 
 user_setup.options.global_options = {
-  -- general 
+  -- general
   background      = "dark";
   ruler 					= false;    -- Show the line and column number of the cursor position, separated by a comma.
   showmode 				= false;    -- If in Insert, Replace or Visual mode put a message on the last line.
@@ -40,14 +40,14 @@ user_setup.options.global_options = {
   termguicolors		= true;     -- draft off. Enables 24-bit RGB color in the TUI.
   hidden 					= true;     -- When off a buffer is unloaded when it is abandoned.
   mouse 					= "a";      -- draft off. 'a' - all model. enable mouse support.
-  syntax 					= "on";					
-  errorbells 			= false;    -- Ring the bell (beep or screen flash) for error messages. 
+  syntax 					= "on";
+  errorbells 			= false;    -- Ring the bell (beep or screen flash) for error messages.
   visualbell      = false;
   clipboard 			= "unnamedplus";  -- Copy and paste from anywhere.
   ignorecase 			= true;     -- Ignore case when search.
-  smartcase 			= true;     -- Override the 'ignorecase' option if the search pattern contains upper case characters. 
+  smartcase 			= true;     -- Override the 'ignorecase' option if the search pattern contains upper case characters.
   smarttab				= true;
-  smartindent 		= true;     --	Do smart autoindenting when starting a new line. 
+  smartindent 		= true;     --	Do smart autoindenting when starting a new line.
   incsearch 			= true;
   shada          	= "!,'300,<50,@100,s10,h";
   completeopt			='menuone,noinsert,noselect';  -- completion: a comma separated list of options for Insert mode completion ins-completion.
@@ -81,23 +81,49 @@ user_setup.options.global_options = {
 
 user_setup.options.bind_options = {
   -- backups
-  undodir 				= global.cache_dir .. "undo/";
+  undodir 				= global.paths.cache_dir .. "undo/";
   undofile 				= true;
   backupskip     	= "/tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*,*/shm/*,/private/var/*,.vault.vim";
-  backupdir       = global.cache_dir .. "backup/";
+  backupdir       = global.paths.cache_dir .. "backup/";
   backup 					= false;
   writebackup			= false;
   swapfile 				= false;    -- same as backup
 }
-  
-  -- users mapping setup                                      -- s-mapping
-user_setup.mapping = {
-    -- TODO
+
+local opt = {}
+-- users mapping setup                                      -- s-mapping
+user_setup.mapping = {}
+user_setup.mapping.leader_key = " "       -- change the leader key
+user_setup.mapping.user_keys = {          -- add the custom key mapping
+  -- format: {mode, before, after, opts}
+
+  {'n', '<Space>', '<nop>', opt},
+
+  -- buffer key
+  {'n', '<leader>cc<CR>', ':bd', opt},
+
+	-- disable arrow keys
+  {'', '<up>', '<nop>', opt},
+  {'', '<down>', '<nop>', opt},
+  {'', '<left>', '<nop>', opt},
+  {'', '<right>', '<nop>', opt},
+
+	-- set jk or kj as ESC in insert mode
+  {'i', 'jk', '<ESC>', opt},
+  -- {'i', 'kj', '<ESC>', opt},
+
+	-- use Tab and S-Tab as C-N and C-P
+	-- {'i', '<tab>', 'pumvisible() ? "\<C-n>" : "\<Tab>"', {expr = true}},
+	-- {'i', '<S-tab>', 'pumvisible() ? "\<C-p>" : "\<S-Tab>"', {expr = true}},
+
+	-- Tab in normal mode will move to next buffer S-Tab will move back
+  {'n', '<TAB>', ':bnext<CR>', opt},
+  {'n', '<S-TAB>', ':bprevious<CR>', opt},
 }
 
   -- Lsp language setup                                       -- s-lsp
 user_setup.lsp = {
-    -- TODO    
+    -- TODO
 }
 
 return user_setup

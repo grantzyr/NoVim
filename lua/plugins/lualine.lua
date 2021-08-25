@@ -50,8 +50,30 @@ S.set1 = function()
     sections = {
       lualine_a = {'mode'},
       lualine_b = {'branch'},
-      lualine_c = {'filename'},
-      lualine_x = {'encoding', 'fileformat', 'filetype'},
+      lualine_c = {
+        'filename'
+        --[[ {
+          'diagnostics',
+          sources = {'nvim_lsp'},
+          sections = {'error', 'warn', 'info'},
+          color_error = nil,
+          color_warn = nil,
+          color_info = nil,
+          symbols = {error = '', warn = '', info = ''}
+        }, ]]
+      },
+      lualine_x = {
+        {
+          'diff',
+          colored = true,
+          color_added = nil,
+          color_modified = nil,
+          color_removed = nil,
+          symbols = {added = '+', modified = '~', removed = '-'}
+        },
+        'fileformat',
+        'filetype'
+      },
       lualine_y = {'progress'},
       lualine_z = {'location'}
     },

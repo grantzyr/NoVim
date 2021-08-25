@@ -9,19 +9,20 @@ end
 
 local opt = {}
 
--- bind keys for plugins
-local bl = require('plugins.bufferline').bind_keys  -- bufferline
-local ts = require('plugins.telescope').bind_keys  -- telescope
-local nt = require('plugins.nvimtree').bind_keys  -- nvim-tree
+local user_keys = require('setup').mapping.user_keys
+vim.g.mapleader = require('setup').mapping.leader_key
 
 local user_mapping = function()
 
+  for _,v in pairs(user_keys) do
+    key_mapper(v[1], v[2], v[3], v[4])
+  end
 	-- set leader key
-  key_mapper('n', '<Space>', '<nop>', opt)
+  --[[ key_mapper('n', '<Space>', '<nop>', opt)
   vim.g.mapleader = " "
 
   -- buffer key
-  key_mapper('n', '<leader>cc', ':bd', opt)
+  key_mapper('n', '<leader>cc<CR>', ':bd', opt)
 
 
 	-- disable arrow keys
@@ -41,28 +42,27 @@ local user_mapping = function()
 	-- Tab in normal mode will move to next buffer S-Tab will move back
 	key_mapper('n', '<TAB>', ':bnext<CR>', opt)
 	key_mapper('n', '<S-TAB>', ':bprevious<CR>', opt)
-
-	-- Insert mode navigation
-	-- key_mapper('i', '<C-l>', '<Right>', opt)
-	-- key_mapper('i', '<C-h>', '<Left>', opt)
-	-- key_mapper('i', '<C-a>', '<ESC>^i', opt)
-	-- key_mapper('i', '<C-e>', '<End>', opt)
+ ]]
 
 	-- run python file
 	-- vim.cmd [[autocmd FileType python nnoremap <buffer> <C-i> :!python % <CR>]]
 	-- key_mapper('n', '<C-i>', ':!python3 % <CR>', {buffer = true})
 end
 
-local bind_mapping = function()
-  -- bl: bafferline, ts: telescope, nt: nvim-tree
-  local map_list = {bl, ts, nt}
+-- bind keys for plugins
+local bl = require('plugins.bufferline').bind_keys  -- bufferline
+local ts = require('plugins.telescope').bind_keys  -- telescope
+local nt = require('plugins.nvimtree').bind_keys  -- nvim-tree
 
-  for _,v in pairs(map_list) do
+-- bl: bafferline, ts: telescope, nt: nvim-tree
+local bind_list = {bl, ts, nt}
+
+local bind_mapping = function()
+  for _,v in pairs(bind_list) do
     for _,k in pairs(v) do
       key_mapper(k[1], k[2], k[3], k[4])
     end
   end
-
 end
 
 user_mapping()
