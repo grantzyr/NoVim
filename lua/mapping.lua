@@ -1,3 +1,4 @@
+-- key mapping setup file
 local vim = vim
 local key_mapper = function(mode, key, result, opts)
 	local options = {noremap = true, silent = true}
@@ -17,32 +18,10 @@ local user_mapping = function()
   for _,v in pairs(user_keys) do
     key_mapper(v[1], v[2], v[3], v[4])
   end
-	-- set leader key
-  --[[ key_mapper('n', '<Space>', '<nop>', opt)
-  vim.g.mapleader = " "
-
-  -- buffer key
-  key_mapper('n', '<leader>cc<CR>', ':bd', opt)
-
-
-	-- disable arrow keys
-	key_mapper('', '<up>', '<nop>', opt)
-	key_mapper('', '<down>', '<nop>', opt)
-	key_mapper('', '<left>', '<nop>', opt)
-	key_mapper('', '<right>', '<nop>', opt)
-
-	-- set jk or kj as ESC in insert mode
-	key_mapper('i', 'jk', '<ESC>', opt)
-	key_mapper('i', 'kj', '<ESC>', opt)
 
 	-- use Tab and S-Tab as C-N and C-P
 	-- key_mapper('i', '<tab>', 'pumvisible() ? "\<C-n>" : "\<Tab>"', {expr = true})
 	-- key_mapper('i', '<S-tab>', 'pumvisible() ? "\<C-p>" : "\<S-Tab>"', {expr = true})
-
-	-- Tab in normal mode will move to next buffer S-Tab will move back
-	key_mapper('n', '<TAB>', ':bnext<CR>', opt)
-	key_mapper('n', '<S-TAB>', ':bprevious<CR>', opt)
- ]]
 
 	-- run python file
 	-- vim.cmd [[autocmd FileType python nnoremap <buffer> <C-i> :!python % <CR>]]

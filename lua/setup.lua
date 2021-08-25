@@ -23,6 +23,7 @@ user_setup.options.plugin_options = {
     bufferline        = 'set1',
     indent_blankline  = 'set1',
     lspconfig         = 'default',
+    nvimtree          = 'set1',
   }
 }
 
@@ -96,26 +97,20 @@ user_setup.mapping = {}
 user_setup.mapping.leader_key = " "       -- change the leader key
 user_setup.mapping.user_keys = {          -- add the custom key mapping
   -- format: {mode, before, after, opts}
-
   {'n', '<Space>', '<nop>', opt},
-
   -- buffer key
-  {'n', '<leader>cc<CR>', ':bd', opt},
-
+  {'n', '<leader>cc', ':bd<CR>', opt},
 	-- disable arrow keys
   {'', '<up>', '<nop>', opt},
   {'', '<down>', '<nop>', opt},
   {'', '<left>', '<nop>', opt},
   {'', '<right>', '<nop>', opt},
-
 	-- set jk or kj as ESC in insert mode
   {'i', 'jk', '<ESC>', opt},
   -- {'i', 'kj', '<ESC>', opt},
-
 	-- use Tab and S-Tab as C-N and C-P
 	-- {'i', '<tab>', 'pumvisible() ? "\<C-n>" : "\<Tab>"', {expr = true}},
 	-- {'i', '<S-tab>', 'pumvisible() ? "\<C-p>" : "\<S-Tab>"', {expr = true}},
-
 	-- Tab in normal mode will move to next buffer S-Tab will move back
   {'n', '<TAB>', ':bnext<CR>', opt},
   {'n', '<S-TAB>', ':bprevious<CR>', opt},

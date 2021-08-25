@@ -7,7 +7,7 @@ local plugin_opts = user_opts.plugin_options.plugin_set
 local global_opts = user_opts.global_options
 local bind_opts = user_opts.bind_options
 
-local load_options = function() 
+local load_options = function()
 
   -- load options from user setup - options - global_options
   for name,value in pairs(global_opts) do

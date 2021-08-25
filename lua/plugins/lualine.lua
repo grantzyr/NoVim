@@ -1,5 +1,6 @@
 local user_opts = require('setup').options
 local plugin_opts = user_opts.plugin_options
+local lualine = require('lualine')
 local S = {}
 
 -- theme -- default is gruvbox_material
@@ -9,7 +10,7 @@ if plugin_opts.theme_statusline then
 end
 
 S.default = function()
-  require'lualine'.setup {
+  lualine.setup {
     options = {
       icons_enabled = true,
       theme = usrtheme,  -- by usr
@@ -39,7 +40,7 @@ S.default = function()
 end
 
 S.set1 = function()
-  require'lualine'.setup {
+  lualine.setup {
     options = {
       icons_enabled = true,
       theme = usrtheme,  -- by usr
