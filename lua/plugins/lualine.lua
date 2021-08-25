@@ -1,10 +1,11 @@
-local usr_opts = require('setup').options
+local user_opts = require('setup').options
+local plugin_opts = user_opts.plugin_options
 local S = {}
 
 -- theme -- default is gruvbox_material
 local usrtheme = 'gruvbox_material'
-if usr_opts.theme_statusline then
-  usrtheme = usr_opts.theme_statusline
+if plugin_opts.theme_statusline then
+  usrtheme = plugin_opts.theme_statusline
 end
 
 S.default = function()

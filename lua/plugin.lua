@@ -15,7 +15,7 @@ vim.cmd [[packadd packer.nvim]]
 local packer = require("packer")
 local util = require("packer.util")
 local use = packer.use
-local usr_plugin = require("setup").plugin
+-- local usr_plugin = require("setup").plugin
 
 packer.init({
   package_root = util.join_paths(vim.fn.stdpath("data"), "site", "pack")
@@ -95,6 +95,9 @@ packer.startup({function()
     run = "yarn install"
   }
 
+  use {
+    "nvim-lua/plenary.nvim"
+  }
 
   -- fuzzy finder over lists -lua
   use {
@@ -105,7 +108,18 @@ packer.startup({function()
 
   -- lsp - lua
   use {
-    "neovim/nvim-lspconfig"
+    "nvim-treesitter/nvim-treesitter",
+    event = "BufRead",
+  }
+
+  use {
+    "kabouzeid/nvim-lspinstall",
+    -- event = "BufRead",
+  }
+
+  use {
+    "neovim/nvim-lspconfig",
+    after = "nvim-lspinstall",
   }
 
   -- File Explorer - lua
@@ -115,7 +129,7 @@ packer.startup({function()
 --    keys = {"n", "<leader>at"}
   }
 
-  -- startup time check
+  -- startup time check - vim
   use {
     'tweekmonster/startuptime.vim'
   }
@@ -128,14 +142,25 @@ packer.startup({function()
     ft = 'markdown'
   }
 
-  -- git signs
---  use {
---    'lewis6991/gitsigns.nvim',
---    requires = {
---      'nvim-lua/plenary.nvim'
---    },
---    config = function() require('gitsigns').setup() end
---  }
+  -- git signs - lua
+  --[[ use {
+    'lewis6991/gitsigns.nvim',
+    cond = function()
+      return vim.fn.isdirectory ".git" == 1
+    end,
+    requires = {
+      'nvim-lua/plenary.nvim'
+    },
+    config = function() 
+      require('gitsigns').setup() 
+    end
+  } ]]
+
+  -- indent blankline - lua
+  use {
+    "lukas-reineke/indent-blankline.nvim",
+    event = "BufRead"
+  }
 
   -- statusline -lua
   use {
@@ -147,7 +172,7 @@ packer.startup({function()
   use {
     'akinsho/bufferline.nvim',
     requires = 'kyazdani42/nvim-web-devicons',
-    after = 'lualine.nvim'
+    -- after = 'lualine'
   }
 
   end,
