@@ -83,8 +83,9 @@ _G.packer_plugins = {
     path = "/Users/grant/.local/share/nvim/site/pack/packer/opt/indent-blankline.nvim"
   },
   kommentary = {
-    loaded = true,
-    path = "/Users/grant/.local/share/nvim/site/pack/packer/start/kommentary"
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/grant/.local/share/nvim/site/pack/packer/opt/kommentary"
   },
   ["lualine.nvim"] = {
     loaded = true,
@@ -102,8 +103,7 @@ _G.packer_plugins = {
   },
   ["nvim-lspconfig"] = {
     loaded = true,
-    needs_bufread = false,
-    path = "/Users/grant/.local/share/nvim/site/pack/packer/opt/nvim-lspconfig"
+    path = "/Users/grant/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
   },
   ["nvim-lspinstall"] = {
     loaded = true,
@@ -114,9 +114,8 @@ _G.packer_plugins = {
     path = "/Users/grant/.local/share/nvim/site/pack/packer/start/nvim-tree.lua"
   },
   ["nvim-treesitter"] = {
-    loaded = false,
-    needs_bufread = true,
-    path = "/Users/grant/.local/share/nvim/site/pack/packer/opt/nvim-treesitter"
+    loaded = true,
+    path = "/Users/grant/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
   },
   ["nvim-web-devicons"] = {
     loaded = true,
@@ -133,6 +132,10 @@ _G.packer_plugins = {
   ["startuptime.vim"] = {
     loaded = true,
     path = "/Users/grant/.local/share/nvim/site/pack/packer/start/startuptime.vim"
+  },
+  ["telescope-fzf-native.nvim"] = {
+    loaded = true,
+    path = "/Users/grant/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim"
   },
   ["telescope.nvim"] = {
     loaded = true,
@@ -163,7 +166,7 @@ vim.cmd [[au FileType markdown ++once lua require("packer.load")({'markdown-prev
 time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'nvim-treesitter', 'indent-blankline.nvim'}, { event = "BufRead *" }, _G.packer_plugins)]]
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'kommentary', 'indent-blankline.nvim'}, { event = "BufRead *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end

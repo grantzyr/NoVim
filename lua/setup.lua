@@ -24,6 +24,7 @@ user_setup.options.plugin_options = {
     indent_blankline  = 'set1',
     lspconfig         = 'default',
     nvimtree          = 'set1',
+    telescope         = 'default',
   }
 }
 

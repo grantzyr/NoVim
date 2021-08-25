@@ -15,7 +15,6 @@ vim.cmd [[packadd packer.nvim]]
 local packer = require("packer")
 local util = require("packer.util")
 local use = packer.use
--- local usr_plugin = require("setup").plugin
 
 packer.init({
   package_root = util.join_paths(vim.fn.stdpath("data"), "site", "pack")
@@ -23,18 +22,6 @@ packer.init({
 
 packer.startup({function()
 
-  -- for name,value in pairs(usr_plugin) do
-  --   use {
-  --     value.name,
-  --     ft = value.ft,
-  --     cmd = value.cmd,
-  --     event = value.event,
-  --     requires = value.requires,
-  --     after = value.after,
-  --     config = value.config,
-  --     run = value.run
-  --   }
-	-- end
   -- Packer can manage itself - lua
   use {
     "wbthomason/packer.nvim"
@@ -43,8 +30,8 @@ packer.startup({function()
 
   -- comment - lua
   use {
-    "b3nj5m1n/kommentary"
-
+    "b3nj5m1n/kommentary",
+    event = "BufRead"
   }
 
   -- auto add closer - vim
@@ -60,11 +47,6 @@ packer.startup({function()
   -- add/delete/replace surroundings of a sandwiched textobject, like (foo), "bar".
 --  use {
 --    "machakann/vim-sandwich"
---  }
-
-  -- highlight
---  use {
---    "nvim-treesitter/nvim-treesitter"
 --  }
 
   -- theme support live change color
@@ -89,7 +71,7 @@ packer.startup({function()
 --    "SirVer/ultisnips"
 --  }
 
-  -- formatting
+  -- formatting TODO
   use {
     "prettier/vim-prettier",
     run = "yarn install"
@@ -102,14 +84,19 @@ packer.startup({function()
   -- fuzzy finder over lists -lua
   use {
     "nvim-telescope/telescope.nvim",
-    requires = { {"nvim-lua/plenary.nvim"} },
---    keys = {"n", "<leader>af"}
+    requires = {
+      "nvim-lua/plenary.nvim",
+      {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        run = "make",
+      }
+    }
   }
 
-  -- lsp - lua
+  -- lsp - lua -- TODO
   use {
     "nvim-treesitter/nvim-treesitter",
-    event = "BufRead",
+    -- event = "BufRead",
   }
 
   use {
@@ -119,7 +106,7 @@ packer.startup({function()
 
   use {
     "neovim/nvim-lspconfig",
-    after = "nvim-lspinstall",
+    -- after = "nvim-lspinstall",
   }
 
   -- File Explorer - lua
@@ -142,7 +129,7 @@ packer.startup({function()
     ft = 'markdown'
   }
 
-  -- git signs - lua
+  -- git signs - lua TODO
   --[[ use {
     'lewis6991/gitsigns.nvim',
     cond = function()
@@ -151,8 +138,8 @@ packer.startup({function()
     requires = {
       'nvim-lua/plenary.nvim'
     },
-    config = function() 
-      require('gitsigns').setup() 
+    config = function()
+      require('gitsigns').setup()
     end
   } ]]
 
